@@ -589,13 +589,13 @@ endif
 ## Install it
 
 ifeq ($(NEEDS_KERNEL_COPY),true)
+$(INSTALLED_KERNEL_TARGET): $(KERNEL_BIN)
+	$(transform-prebuilt-to-target)
 ifneq ($(TW_LOAD_VENDOR_MODULES),)
 ifdef TARGET_PREBUILT_KERNEL
 	$(call twrp-depmod)
 endif
 endif
-$(INSTALLED_KERNEL_TARGET): $(KERNEL_BIN)
-	$(transform-prebuilt-to-target)
 endif
 
 ifeq ($(RECOVERY_KERNEL_COPY),true)
